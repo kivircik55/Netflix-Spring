@@ -33,6 +33,6 @@ import java.util.Locale;
             return s;
         }
     public String defaultMessage() {
-        return "Salut !";
+        return "Le service est down !";
     }
     }
