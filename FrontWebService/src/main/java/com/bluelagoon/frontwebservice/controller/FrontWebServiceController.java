@@ -1,7 +1,7 @@
 package com.bluelagoon.frontwebservice.controller;
 
-import org.slf4j.Logger;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -18,9 +18,10 @@ import java.util.Locale;
     public class FrontWebServiceController {
         @Autowired
         DiscoveryClient discoveryClient;
+        @HystrixCommand(fallbackMethod = "defaultMessage")
         @GetMapping("/")
         public String hello() {
-            List<ServiceInstance> instances = discoveryClient.getInstances("NETFLIX_MICRO_SERVICE");
+            List<ServiceInstance> instances = discoveryClient.getInstances("NETFLIX_MI");
             ServiceInstance test = instances.get(0);
             String hostname = test.getHost();
             int port = test.getPort();
@@ -31,4 +32,7 @@ import java.util.Locale;
             String s = response.getBody().toUpperCase(Locale.ROOT);
             return s;
         }
+    public String defaultMessage() {
+        return "Salut !";
+    }
     }
