@@ -21,7 +21,7 @@ import java.util.Locale;
         @HystrixCommand(fallbackMethod = "defaultMessage")
         @GetMapping("/")
         public String hello() {
-            List<ServiceInstance> instances = discoveryClient.getInstances("NETFLIX_MI");
+            List<ServiceInstance> instances = discoveryClient.getInstances("NETFLIX_MICRO_SERVICE");
             ServiceInstance test = instances.get(0);
             String hostname = test.getHost();
             int port = test.getPort();
