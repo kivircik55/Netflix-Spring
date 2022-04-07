@@ -1,4 +1,4 @@
-package com.bluelagoon.loadbalancer.controller;
+package com.bluelagoon.loadbalancer.loadbalancer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
