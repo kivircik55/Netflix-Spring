@@ -8,6 +8,7 @@ public class WebServiceController {
 
     @GetMapping("/")
     public String sayHello(){
-        return "Hello";
+        return "Hello user welcome !";
     }
+    
 }
